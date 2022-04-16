@@ -1,56 +1,26 @@
-function Play() {
-    let originalPlayerSelection = prompt("Choose: Rock, Paper or Scissors")
-    let playerSelection = originalPlayerSelection.toLowerCase()
-    console.log(playerSelection)
-    let computerChoice = Math.floor(Math.random() * 3 + 1)
-    
-    if (playerSelection == "rock" && computerChoice == "1") {
-        console.log("Player choice: " + playerSelection)
-        console.log("Computer choice: Rock")
-        console.log("You tied!")
-    }
-    if (playerSelection == "rock" && computerChoice == "2") {
-        console.log("Player choice: " + playerSelection)
-        console.log("Computer choice: Paper")
-        console.log("You lose!")
-    }
-    if (playerSelection == "rock" && computerChoice == "3") {
-        console.log("Player choice: " + playerSelection)
-        console.log("Computer choice: Scissors")
-        console.log("You win!")
-    }
+function computerPlay() {
+  let randomNumber = Math.floor(Math.random() * 3 + 1)
+  let choice = ""
+  if (randomNumber == 1) {
+    choice = "rock"
+  } else if (randomNumber == 2) {
+    choice = "paper"
+  } else if (randomNumber == 3) {
+    choice = "scissors"
+  }
 
-    if (playerSelection == "paper" && computerChoice == "1") {
-        console.log("Player choice: " + playerSelection)
-        console.log("Computer choice: Rock")
-        console.log("You win!")
-    }
-    if (playerSelection == "paper" && computerChoice == "2") {
-        console.log("Player choice: " + playerSelection)
-        console.log("Computer choice: Paper")
-        console.log("You tied!")
-    }
-    if (playerSelection == "paper" && computerChoice == "3") {
-        console.log("Player choice: " + playerSelection)
-        console.log("Computer choice: Scissors")
-        console.log("You lose!")
-    }
-
-    if (playerSelection == "scissors" && computerChoice == "1") {
-        console.log("Player choice: " + playerSelection)
-        console.log("Computer choice: Rock")
-        console.log("You lose!")
-    }
-    if (playerSelection == "scissors" && computerChoice == "2") {
-        console.log("Player choice: " + playerSelection)
-        console.log("Computer choice: Paper")
-        console.log("You win!")
-    }
-    if (playerSelection == "scissors" && computerChoice == "3") {
-        console.log("Player choice: " + playerSelection)
-        console.log("Computer choice: Scissors")
-        console.log("You tied!")
-    }
+  return choice
 }
 
-Play()
+function playRound(playerChoice, computerChoice) {
+  if (playerChoice == "rock" && computerChoice == "rock" || playerChoice == "paper" && computerChoice == "paper" || playerChoice == "scissors" && computerChoice == "scissors") {
+    console.log("You tied!")
+  } else if (playerChoice == "rock" && computerChoice == "scissors" || playerChoice == "paper" && computerChoice == "rock" || playerChoice == "scissors" && computerChoice == "paper") {
+    console.log("You win!")
+  } else if (playerChoice == "rock" && computerChoice == "paper" || playerChoice == "paper" && computerChoice == "scissors" || playerChoice == "scissors" && computerChoice == "rock") {
+    console.log("You lose!")
+  }
+}
+
+let playerChoice = prompt("Choose: Rock, Paper or Scissors").toLowerCase()
+playRound(playerChoice, computerPlay())
